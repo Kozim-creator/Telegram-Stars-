@@ -1,7 +1,7 @@
 
 "use strict";
 
-const TELEGRAM_USERNAME = "DERILAZ";
+const TELEGRAM_USERNAME = "DERILaz";
 const STORAGE_KEY = "neon_stars_orders_v1";
 const DEMO_BALANCE = 0;
 
