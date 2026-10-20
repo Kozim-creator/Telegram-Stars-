@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0716">
+
+    <title>NEON STARS — Telegram Stars Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <div class="app-shell">
+
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+            <a href="#" class="brand" data-page="dashboard">
+                <span class="brand-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </span>
+                <span class="brand-text">
+                    <strong>NEON</strong>
+                    <span>STARS STORE</span>
+                </span>
+            </a>
+
+            <div class="sidebar-label">ГЛАВНОЕ МЕНЮ</div>
+
+            <nav class="navigation">
+                <button class="nav-item active" data-page="dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Главная</span>
+                </button>
+
+                <button class="nav-item" data-page="catalog">
+                    <i class="fa-solid fa-store"></i>
+                    <span>Магазин Stars</span>
+                </button>
+
+                <button class="nav-item" data-page="calculator">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Калькулятор</span>
+                </button>
+
+                <button class="nav-item" data-page="history">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>История заказов</span>
+                    <span class="nav-count" id="historyCount">0</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+                    <strong>Нужна помощь?</strong>
+                    <p>Свяжись с поддержкой магазина.</p>
+                    <a href="https://t.me/Stars1229"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Написать <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <div class="sidebar-footer">
+                    <span class="online-dot"></span>
+                    NEON STARS STORE
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основная часть -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div class="mobile-brand">
+                    <span class="brand-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </span>
+                    <strong>NEON STARS</strong>
+                </div>
+
+                <div class="topbar-caption">
+                    <span class="status-dot"></span>
+                    DIGITAL STORE
+                </div>
+
+                <a href="https://t.me/Stars1229"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="top-contact">
+                    <i class="fa-brands fa-telegram"></i>
+                    <span>@Stars1229</span>
+                </a>
+            </header>
+
+            <!-- ГЛАВНАЯ -->
+            <section class="page active" id="page-dashboard">
+
+                <div class="welcome-row">
+                    <div>
+                        <div class="eyebrow">
+                            <span class="eyebrow-line"></span>
+                            ДОБРО ПОЖАЛОВАТЬ В NEON
+                        </div>
+                        <h1>Твоя игровая<br>
+                            <span class="gradient-text">зона Stars.</span>
+                        </h1>
+                        <p class="welcome-description">
+                            Выбирай пакет, рассчитывай стоимость
+                            и оформляй заказ в пару кликов.
+                        </p>
+                    </div>
+
+                    <div class="hero-emblem">
+                        <div class="emblem-ring ring-one"></div>
+                        <div class="emblem-ring ring-two"></div>
+                        <div class="emblem-core">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="emblem-spark spark-one">✦</span>
+                        <span class="emblem-spark spark-two">✧</span>
+                    </div>
+                </div>
+
+                <!-- Статистика -->
+                <div class="stats-grid">
+                    <article class="stat-card balance-card">
+                        <div class="stat-top">
+                            <span>Виртуальный баланс</span>
+                            <span class="stat-icon purple">
+                                <i class="fa-solid fa-wallet"></i>
+                            </span>
+                        </div>
+                        <div class="stat-value" id="balanceValue">
+                            0 <small>сум</small>
+                        </div>
+                        <div class="stat-note">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Демонстрационный баланс
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Всего заказов</span>
+                            <span class="stat-icon blue">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </span>
+                        </div>
+                        <div class="stat-value" id="totalOrders">0</div>
+                        <div class="stat-note">В истории браузера</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Заказано Stars</span>
+                            <span class="stat-icon gold">
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                        </div>
+                        <div class="stat-value" id="totalStars">0</div>
+                        <div class="stat-note">Сумма заказов</div>
+                    </article>
+                </div>
+
+                <!-- Баннер -->
+                <section class="hero-banner">
+                    <div class="hero-banner-content">
+                        <div class="banner-tag">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            NEON EXPERIENCE
+                        </div>
+
+                        <h2>Пополняй свой<br>
+                            <span>Telegram Stars.</span>
+                        </h2>
+
+                        <p>
+                            Выбирай количество звёзд и отправляй
+                            заказ напрямую продавцу в Telegram.
+                        </p>
+
+                        <button class="primary-button" data-go="catalog">
+                            Открыть магазин
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="banner-art">
+                        <div class="banner-circle circle-back"></div>
+                        <div class="banner-circle circle-front"></div>
+                        <i class="fa-solid fa-star banner-star"></i>
+                        <span class="banner-plus plus-one">+</span>
+                        <span class="banner-plus plus-two">✦</span>
+                    </div>
+                </section>
+
+                <!-- Популярные пакеты -->
+                <section class="section-block">
+                    <div class="section-heading-row">
+                        <div>
+                            <div class="eyebrow">ВЫБОР ПОЛЬЗОВАТЕЛЕЙ</div>
+                            <h2>Популярные пакеты</h2>
+                        </div>
+
+                        <button class="text-button" data-go="catalog">
+                            Все пакеты
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="popular-grid" id="popularPackages"></div>
+                </section>
+
+                <!-- Последние заказы -->
+                <section class="section-block">
+                    <div class="section-heading-row">
+                        <div>
+                            <div class="eyebrow">ТВОЯ АКТИВНОСТЬ</div>
+                            <h2>Последние заказы</h2>
+                        </div>
+
+                        <button class="text-button" data-go="history">
+                            Вся история
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div id="recentOrders" class="recent-orders"></div>
+                </section>
+            </section>
+
+            <!-- МАГАЗИН -->
+            <section class="page" id="page-catalog">
+                <div class="page-heading">
+                    <div class="eyebrow">NEON MARKETPLACE</div>
+                    <h1>Магазин <span class="gradient-text">Stars</span></h1>
+                    <p>Выбери пакет с подходящим количеством звёзд.</p>
+                </div>
+
+                <div class="catalog-toolbar">
+                    <div class="toolbar-label">
+                        <i class="fa-solid fa-layer-group"></i>
+                        Все пакеты
+                    </div>
+                    <span class="toolbar-badge">10 ПАКЕТОВ</span>
+                </div>
+
+                <div class="catalog-grid" id="catalogPackages"></div>
+            </section>
+
+            <!-- КАЛЬКУЛЯТОР -->
+            <section class="page" id="page-calculator">
+                <div class="page-heading">
+                    <div class="eyebrow">SMART PRICE ENGINE</div>
+                    <h1>Калькулятор <span class="gradient-text">Stars</span></h1>
+                    <p>Рассчитай стоимость до оформления заказа.</p>
+                </div>
+
+                <div class="calculator-layout">
+                    <div class="calculator-panel">
+                        <div class="panel-title">
+                            <span class="panel-icon">
+                                <i class="fa-solid fa-sliders"></i>
+                            </span>
+                            <div>
+                                <h2>Настрой свой заказ</h2>
+                                <p>Укажи необходимое количество.</p>
+                            </div>
+                        </div>
+
+                        <label for="starInput" class="field-label">
+                            КОЛИЧЕСТВО STARS
+                        </label>
+
+                        <div class="number-input-wrap">
+                            <input type="number"
+                                   id="starInput"
+                                   min="50"
+                                   max="10000000"
+                                   step="1"
+                                   value="50"
+                                   inputmode="numeric">
+                            <span class="number-input-icon">
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                        </div>
+
+                        <div class="field-hint" id="inputHint">
+                            Минимальный заказ — 50 Stars
+                        </div>
+
+                        <div class="field-label quick-label">
+                            БЫСТРОЕ ДОБАВЛЕНИЕ
+                        </div>
+
+                        <div class="quick-grid">
+                            <button type="button" class="quick-button" data-add="50">+50</button>
+                            <button type="button" class="quick-button" data-add="100">+100</button>
+                            <button type="button" class="quick-button" data-add="500">+500</button>
+                            <button type="button" class="quick-button" data-add="1000">+1000</button>
+                        </div>
+
+                        <div class="calculator-divider"></div>
+
+                        <div class="calc-total">
+                            <span>ИТОГОВАЯ СТОИМОСТЬ</span>
+                            <strong id="calcPrice">13 000 сум</strong>
+                        </div>
+
+                        <button class="primary-button full-button"
+                                id="calcOrderBtn" type="button">
+                            Продолжить заказ
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                        <p class="calculator-disclaimer">
+                            Цена рассчитывается по тарифам магазина.
+                            Для промежуточных количеств используется
+                            расчёт между ближайшими тарифами.
+                        </p>
+                    </div>
+
+                    <aside class="calculator-info">
+                        <div class="info-illustration">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3>Твой заказ.<br>Твой стиль.</h3>
+                        <p>
+                            После оформления откроется Telegram
+                            с подготовленным сообщением продавцу.
+                        </p>
+
+                        <div class="mini-feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>10 готовых пакетов</span>
+                        </div>
+                        <div class="mini-feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Мгновенный расчёт цены</span>
+                        </div>
+                        <div class="mini-feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>История в браузере</span>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- ИСТОРИЯ -->
+            <section class="page" id="page-history">
+                <div class="page-heading">
+                    <div class="eyebrow">ORDER MANAGEMENT</div>
+                    <h1>История <span class="gradient-text">заказов</span></h1>
+                    <p>Здесь сохраняются созданные тобой заявки.</p>
+                </div>
+
+                <div class="history-summary">
+                    <div class="history-summary-item">
+                        <span>Всего заявок</span>
+                        <strong id="historyTotal">0</strong>
+                    </div>
+                    <div class="history-summary-item">
+                        <span>Всего Stars</span>
+                        <strong id="historyStars">0</strong>
+                    </div>
+                    <div class="history-summary-item">
+                        <span>Общая сумма</span>
+                        <strong id="historyAmount">0 сум</strong>
+                    </div>
+                </div>
+
+                <div class="history-toolbar">
+                    <h2>Твои заявки</h2>
+                    <button class="danger-button" id="clearHistoryBtn" type="button">
+                        <i class="fa-solid fa-trash"></i>
+                        Очистить историю
+                    </button>
+                </div>
+
+                <div id="historyList" class="history-list"></div>
+
+                <p class="history-note">
+                    Запись в истории означает, что заявка была подготовлена.
+                    Она не подтверждает оплату или доставку Stars.
+                </p>
+            </section>
+
+            <footer class="main-footer">
+                <span>© 2026 NEON STARS STORE</span>
+                <span>POWERED BY <strong>NEON</strong></span>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Окно оформления -->
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+        <section class="order-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="modalTitle">
+
+            <div class="modal-top">
+                <div>
+                    <div class="eyebrow">FINAL CHECK</div>
+                    <h2 id="modalTitle">Твой заказ</h2>
+                </div>
+
+                <button type="button" class="modal-close" id="closeModalBtn"
+                        aria-label="Закрыть окно">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="order-product">
+                <div class="order-product-icon">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div>
+                    <strong id="modalStarsCount">50 Stars</strong>
+                    <span>Telegram Stars</span>
+                </div>
+                <strong id="modalTotalPrice">13 000 сум</strong>
+            </div>
+
+            <form id="orderForm">
+                <label for="usernameInput" class="field-label">
+                    ТВОЙ TELEGRAM USERNAME ИЛИ ID
+                </label>
+
+                <input type="text"
+                       id="usernameInput"
+                       class="text-input"
+                       placeholder="@username"
+                       maxlength="100"
+                       autocomplete="off"
+                       required>
+
+                <p class="form-error" id="formError" role="alert"></p>
+
+                <button class="primary-button full-button" type="submit">
+                    <i class="fa-brands fa-telegram"></i>
+                    Продолжить в Telegram
+                </button>
+            </form>
+
+            <p class="modal-disclaimer">
+                Telegram откроется с текстом заявки. Проверь сообщение
+                и отправь его продавцу вручную.
+            </p>
+        </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
